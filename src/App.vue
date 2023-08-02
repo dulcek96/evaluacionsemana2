@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
@@ -11,8 +10,9 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/registro">Registro</RouterLink>
+        <RouterLink to="/loading">Login</RouterLink>
+        <RouterLink to="/cotenido">Contenido</RouterLink>
       </nav>
     </div>
   </header>
@@ -21,34 +21,67 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
 
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
 
+nav {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
 
-/* Estilos para los enlaces dentro del header */
+nav a.router-link-exact-active {
+  color: var(--color-text);
+}
+
+nav a.router-link-exact-active:hover {
+  background-color: transparent;
+}
+
 nav a {
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
+  text-decoration: none; /* Añadimos esto para quitar la decoración de subrayado */
+  color: black; /* Cambia el color de los enlaces según tus estilos */
 }
 
 nav a:first-of-type {
   border: 0;
 }
 
-/* Estilos para el header en pantallas grandes (mínimo 1024px de ancho) */
 @media (min-width: 1024px) {
   header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-    background-color: #fff; /* Puedes agregar un fondo si lo deseas */
-    z-index: 9999; /* Agrega una posición z para asegurar que esté por encima de otros elementos */
+  }
+
+  .logo {
+    margin: 0 2rem 0 0;
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  nav {
+    text-align: left;
+    margin-left: -1rem;
+    font-size: 1rem;
+
+    padding: 1rem 0;
+    margin-top: 1rem;
   }
 }
-
-
 </style>
