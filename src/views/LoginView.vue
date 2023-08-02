@@ -7,25 +7,24 @@ const formulario = ref({
   password: '',
 });
 
-function iniciarSesion() {
+function iniciarSesion(usuario, contraseña) {
   const router = useRouter();
-  // Aquí debes realizar la lógica para verificar los datos ingresados
-  // con los usuarios registrados en tu archivo usuarios.json o base de datos.
 
-  // Simulamos que el usuario inicia sesión con éxito
-  const usuarioEncontrado = {
-    nombre: 'Usuario',
-    apellido: 'Registrado',
-    correo: formulario.user,
-  };
+  const usuarioEncontrado = usuarios.find((u) => u.user === usuario);
 
-  if (usuarioEncontrado) {
-    // Redireccionamos a la página ContenidoView.vue y pasamos el usuario como parámetro
-    router.push({ name: 'contenido' });
+
+  if (!usuarioEncontrado) {
+    alert('Usuario no encontrado. Por favor, verifique sus datos.');
+    return;
+  }
+  if (usuarioEncontrado.password === contraseña) {
+    
+    router.push('/contenido');
   } else {
-    console.log('Usuario o contraseña incorrectos.');
+    alert('Contraseña incorrecta. Por favor, verifique sus datos.');
   }
 }
+
 </script>
 
 <template>

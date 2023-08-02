@@ -1,22 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+
 const routes = [
   {
-    path: '/',
-    redirect: '/registro',
-  },
+  path: '/',
+  redirect: '/registro',
+},
   {
-    path: '/registro',
-    component: () => import('../views/RegistroView.vue'),
+    path: '/contenido',
+    component: () => import('../views/ContenidoView.vue')
   },
   {
     path: '/login',
-    component: () => import('../views/LoginView.vue'),
+    component: () => import('../views/LoginView.vue')
   },
   {
-    path: '/contenido',
-    component: () => import('../views/ContenidoView.vue'),
-  },
+    path: '/registro',
+    name: 'registro',
+    // route level code-splitting
+    // this generates a separate chunk (About.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('../views/RegistroView.vue')
+  }
 ];
 
 const router = createRouter({
@@ -25,3 +30,4 @@ const router = createRouter({
 });
 
 export default router;
+
